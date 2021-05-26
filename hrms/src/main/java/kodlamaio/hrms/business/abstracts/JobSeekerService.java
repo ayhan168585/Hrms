@@ -1,16 +1,15 @@
 package kodlamaio.hrms.business.abstracts;
+
 import java.util.List;
 
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Employer;
 import kodlamaio.hrms.entities.concretes.JobSeeker;
 
+public interface JobSeekerService {
 
-
-public interface EmployerService {
-
-	DataResult<List<Employer>> getAll();
-	Result add(Employer employer);
-	DataResult<Employer> findByEmailAddress(String email);
+	DataResult<List<JobSeeker>> getAll();
+	Result add(JobSeeker jobSeeker);
+	DataResult<JobSeeker> findByEmailAddress(String email);
+	DataResult<JobSeeker> findByTcNo(String tcNo);
 }

@@ -9,33 +9,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.JobPositionService;
+import kodlamaio.hrms.business.abstracts.VerificationService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.JobPosition;
+import kodlamaio.hrms.entities.concretes.Verification;
 
 @RestController
-@RequestMapping(value="/api/jobpositions")
+@RequestMapping("/api/verifications")
+public class VerificationsController {
 
-public class JobPositionsController {
+	private VerificationService verificationService;
 
-	private JobPositionService jobPositionService;
-	
 	@Autowired
-	public JobPositionsController(JobPositionService jobPositionService) {
+	public VerificationsController(VerificationService verificationService) {
 		super();
-		this.jobPositionService = jobPositionService;
+		this.verificationService = verificationService;
 	}
-
 	@GetMapping("/getall")
-	public DataResult<List<JobPosition>> getAll(){
-		
-		return this.jobPositionService.getAll();
+	public DataResult<List<Verification>> getAll(){
+		return this.verificationService.getAll();
 	}
 	@PostMapping("/add")
-	
-	public Result add(@RequestBody JobPosition jobPosition) {
-		return this.jobPositionService.add(jobPosition);
+	public Result add(@RequestBody Verification verification) {
+		return this.verificationService.add(verification);
 	}
-	
 }

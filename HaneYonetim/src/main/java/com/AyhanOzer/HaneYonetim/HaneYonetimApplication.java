@@ -23,7 +23,6 @@ public class HaneYonetimApplication {
 	        return new Docket(DocumentationType.SWAGGER_2)  
 	          .select()                                  
 	          .apis(RequestHandlerSelectors.basePackage("com.AyhanOzer.HaneYonetim"))              
-	          .paths(PathSelectors.any())                          
 	          .build();                                           
 	    }
 
