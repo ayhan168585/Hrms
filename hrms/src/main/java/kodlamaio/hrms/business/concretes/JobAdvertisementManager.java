@@ -59,10 +59,11 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getByCompanyName(int userId) {
+	public DataResult<List<JobAdvertisement>> getByCompanyName(int userId,boolean isActive) {
 		// TODO Auto-generated method stub
+		isActive=true;
 		return new SuccessDataResult<List<JobAdvertisement>>
-		(this.jobAdvertisementDao.getByCompanyName(userId),"Seçtiğiniz firmaya ait iş ilanları listelendi.");
+		(this.jobAdvertisementDao.getByCompanyName(userId,isActive),"Seçtiğiniz firmaya ait aktif iş ilanları listelendi.");
 	}
 
 	@Override
@@ -79,6 +80,13 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		Sort sort=Sort.by(Sort.Direction.DESC,"applicationDeadline");
 		return new SuccessDataResult<List<JobAdvertisement>>
 		(this.jobAdvertisementDao.findAll(sort),"İş ilanları tarihe göre listelendi.");
+	}
+
+	@Override
+	public DataResult<JobAdvertisement> getByJobAdvertisementId(int jobAdvertisementId) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<JobAdvertisement>
+		(this.jobAdvertisementDao.getByJobAdvertisementId(jobAdvertisementId),"Seçtiğiniz iş ilanının ayrıntısı listelendi.");
 	}
 
 }

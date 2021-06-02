@@ -3,6 +3,7 @@ package kodlamaio.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 
 @RestController
 @RequestMapping("/api/jobadvertisements")
+@CrossOrigin
 public class JobAdvertisementsController {
 
 	private JobAdvertisementService jobAdvertisementService;
@@ -41,8 +43,8 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.getAll(pageNo, pageSize);
 	}
 	@GetMapping("/getbycompanyname")
-	public DataResult<List<JobAdvertisement>> getByCompanyName(int userId){
-		return this.jobAdvertisementService.getByCompanyName(userId);
+	public DataResult<List<JobAdvertisement>> getByCompanyName(int userId,boolean isActive){
+		return this.jobAdvertisementService.getByCompanyName(userId,isActive);
 	}
 	@GetMapping("getallbyisactive")
 	
@@ -52,6 +54,12 @@ public class JobAdvertisementsController {
 	@GetMapping("/getallsorted")
 	public DataResult<List<JobAdvertisement>> getAllSorted(){
 		return this.jobAdvertisementService.getAllSorted();
+	}
+	
+	@GetMapping("/getbyjobadvertisementid")
+	
+	public DataResult<JobAdvertisement> getByJobAdvertisementId(int jobAdvertisementId){
+		return this.jobAdvertisementService.getByJobAdvertisementId(jobAdvertisementId);
 	}
 	
 }

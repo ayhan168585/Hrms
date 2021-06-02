@@ -5,6 +5,7 @@ import java.util.List;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobSeeker;
+import kodlamaio.hrms.entities.dtos.JobSeekerWithJobPositionDto;
 
 public interface JobSeekerService {
 
@@ -12,4 +13,6 @@ public interface JobSeekerService {
 	Result add(JobSeeker jobSeeker);
 	DataResult<JobSeeker> findByEmailAddress(String email);
 	DataResult<JobSeeker> findByTcNo(String tcNo);
+	
+	DataResult<List<JobSeekerWithJobPositionDto>> getJobSeekerWithJopPositionDetails();
 }

@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -18,6 +20,8 @@ public class Spending {
 	@GeneratedValue
 	@Column(name="id")
 	private int id;
+//	@Column(name="expense_id")
+//	private int expenseId;
 	@Column(name="spending_category_id")
 	private int spendingCategoryId;
 	@Column(name="product_id")
@@ -25,10 +29,14 @@ public class Spending {
 	@Column(name="house_hold_id")
 	private int houseHoldId;
 	@Column(name="name")
-	private String name;
+	private String spendingName;
 	@Column(name="date_of_process")
 	private Date dateOfProcess;
 	@Column(name="total_price")
 	private double totalPrice;
+	
+	@ManyToOne()
+	@JoinColumn(name="expense_id")
+	private Expense expense;
 
 }

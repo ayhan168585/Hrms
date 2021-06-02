@@ -10,10 +10,16 @@ import kodlamaio.northwind.entities.concretes.Product;
 public interface JobAdvertisementService {
 
 	DataResult<List<JobAdvertisement>> getAll();
-	 DataResult<List<JobAdvertisement>> getAll(int pageNo,int pageSize);
-	 DataResult<List<JobAdvertisement>> getByCompanyName(int userId);
-	 DataResult<List<JobAdvertisement>> getAllByIsActive(boolean isActive);
-	 DataResult<List<JobAdvertisement>> getAllSorted();
+
+	DataResult<List<JobAdvertisement>> getAll(int pageNo, int pageSize);
+
+	DataResult<List<JobAdvertisement>> getByCompanyName(int userId, boolean isActive);
+
+	DataResult<List<JobAdvertisement>> getAllByIsActive(boolean isActive);
+
+	DataResult<List<JobAdvertisement>> getAllSorted();
+
+	DataResult<JobAdvertisement> getByJobAdvertisementId(int jobAdvertisementId);
 
 	Result add(JobAdvertisement jobAdvertisement);
 }

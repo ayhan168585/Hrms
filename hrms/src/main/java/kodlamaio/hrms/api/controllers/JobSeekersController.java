@@ -3,6 +3,7 @@ package kodlamaio.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,9 +14,11 @@ import kodlamaio.hrms.business.abstracts.JobSeekerService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobSeeker;
+import kodlamaio.hrms.entities.dtos.JobSeekerWithJobPositionDto;
 
 @RestController
 @RequestMapping("/api/jobseekers")
+@CrossOrigin
 public class JobSeekersController {
 
 	private JobSeekerService jobSeekerService;
@@ -41,4 +44,13 @@ public class JobSeekersController {
 	public DataResult<JobSeeker> findByTcNo(String tcNo){
 		return this.jobSeekerService.findByTcNo(tcNo);
 	}
+	
+	@GetMapping("/getjobseekerwithjobpositiondetails")
+	public DataResult<List<JobSeekerWithJobPositionDto>> getJobSeekerWithJopPositionDetails(){
+		
+		return this.jobSeekerService.getJobSeekerWithJopPositionDetails();
+	}
+		
+	
+	
 }

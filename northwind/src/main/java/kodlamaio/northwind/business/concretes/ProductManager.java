@@ -15,6 +15,7 @@ import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import kodlamaio.northwind.dataAccess.abstracts.ProductDao;
 import kodlamaio.northwind.entities.concretes.Product;
+import kodlamaio.northwind.entities.dtos.ProductWithCategoryDto;
 
 @Service
 
@@ -90,6 +91,12 @@ public class ProductManager implements ProductService {
 		// TODO Auto-generated method stub
 		return new SuccessDataResult<List<Product>>
 		(this.productDao.findAll(sort),"Ürünler listelendi.");
+	}
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<ProductWithCategoryDto>>
+		(this.productDao.getProductWithCategoryDetails(),"Ürünler listelendi.");
 	}
 
 }

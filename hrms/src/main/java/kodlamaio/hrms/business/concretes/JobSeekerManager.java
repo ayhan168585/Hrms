@@ -16,6 +16,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobSeekerDao;
 import kodlamaio.hrms.entities.concretes.JobSeeker;
+import kodlamaio.hrms.entities.dtos.JobSeekerWithJobPositionDto;
 
 @Repository
 public class JobSeekerManager implements JobSeekerService {
@@ -79,6 +80,13 @@ public class JobSeekerManager implements JobSeekerService {
 		else {
 			return new ErrorDataResult<JobSeeker>(null,"Bu TC Numarası sistemde mevcut değil."); 
 		}
+	}
+
+	@Override
+	public DataResult<List<JobSeekerWithJobPositionDto>> getJobSeekerWithJopPositionDetails() {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<JobSeekerWithJobPositionDto>>
+		(this.jobSeekerDao.getJobSeekerWithJopPositionDetails(),"İş arayanın iş pozisyon detayı listelendi.");
 	}
 
 	

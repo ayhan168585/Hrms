@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.AyhanOzer.HaneYonetim.business.abstracts.TitleService;
+import com.AyhanOzer.HaneYonetim.core.utilities.results.DataResult;
+import com.AyhanOzer.HaneYonetim.core.utilities.results.Result;
 import com.AyhanOzer.HaneYonetim.entities.concretes.Title;
 
 @RestController
@@ -23,8 +27,12 @@ public class TitlesController {
 	}
 	
 	@GetMapping("/getall")
-	public List<Title> getAll(){
+	public DataResult<List<Title>> getAll(){
 		return this.titleService.getAll();
+	}
+	@PostMapping("/add")
+	public Result add(@RequestBody Title title) {
+		return this.titleService.add(title);
 	}
 
 }

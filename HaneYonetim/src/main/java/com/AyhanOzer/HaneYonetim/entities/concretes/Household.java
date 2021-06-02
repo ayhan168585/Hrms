@@ -3,7 +3,10 @@ package com.AyhanOzer.HaneYonetim.entities.concretes;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -14,11 +17,11 @@ import lombok.Data;
 public class Household {
 	
 	@Id
-	@GeneratedValue
-	@Column(name="house_id")
-	private int houseId;
-	@Column(name="title_id")
-	private int titleId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="house_hold_id")
+	private int houseHoldId;
+//	@Column(name="title_id")
+//	private int titleId;
 	@Column(name="first_name")
 	private String firstName;
 	@Column(name="last_name")
@@ -27,5 +30,13 @@ public class Household {
 	private String email;
 	@Column(name="telephone")
 	private String telephone;
+	
+	@ManyToOne()
+	@JoinColumn(name="house_id")
+	private House house;
+	
+	@ManyToOne()
+	@JoinColumn(name="title_id")
+	private Title title;
 
 }
